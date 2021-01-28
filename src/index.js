@@ -1,17 +1,46 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, {useState } from 'react';
+import ReactCardFlip from 'react-card-flip';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const CardFlip = () => {
+    const [isFlipped, setIsFlipped] = useState(false);
+  
+    const handleClick = () => {
+      setIsFlipped(!isFlipped)
+    };
+    return (
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+        <div name = "Jackson Wolf" occupation = "Wizard"
+         email = "jtw3vhz@virginia.edu" numba = "(540) 359-2825">
+             hi
+         <button onClick={handleClick()}>Click to flip</button>
+         </div>
+  
+         <div name = "Jared Nguyen" occupation = "Sorceror"
+         email = "idk" numba = "(359) 540-2825">
+             bye
+         <button onClick={handleClick()}>Click to flip</button>
+         </div>
+      </ReactCardFlip>
+    );
+  }
+  
+//   const BusinessCard = ({name, occupation, email, numba}) => {
+//    return (
+//    <div className = "card" >
+//      <TopHalf name = {name} occupation = {occupation}/>
+//      <BottomHalf email = {email} numba = {numba}/>
+//    </div> 
+//   )}
+  
+//   const TopHalf = ({name, occupation}) => <div classname = "card">
+//     <h1>{name}</h1>
+//      <h4>{occupation}</h4>
+//   </div>
+  
+//   const BottomHalf = ({email, numba}) => <div>
+//     <h5>{email}</h5>
+//      <h5>{numba}</h5>
+//   </div>
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<CardFlip />, document.querySelector("#root"));
